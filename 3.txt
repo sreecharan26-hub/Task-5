@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎬 Movie World</title>
+  <style>
+    /* Base Styling */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+    header {
+      background: #222;
+      padding: 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .container {
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: #1c1c1c;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 8px #000;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .card-content {
+      padding: 0.5rem 1rem 1rem;
+    }
+    .card-content h3 {
+      margin: 0.5rem 0;
+    }
+    .card-content p {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    /* Responsive Text */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎥 Movie World</h1>
+  <p>Explore Top Trending Movies</p>
+</header>
+
+<main class="container" id="movie-list">
+  <!-- Movie Cards Injected by JS -->
+</main>
+
+<script>
+  // Dummy Movie Data
+  const movies = [
+    {
+      title: "Inception",
+      image: "https://image.tmdb.org/t/p/w500/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg",
+      description: "A skilled thief leads a team into the dream world to steal secrets."
+    },
+    {
+      title: "Interstellar",
+      image: "https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
+      description: "A team travels through a wormhole in space to ensure humanity's survival."
+    },
+    {
+      title: "The Dark Knight",
+      image: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      description: "Batman faces the Joker, a criminal mastermind, in Gotham City."
+    },
+    {
+      title: "Avengers: Endgame",
+      image: "https://image.tmdb.org/t/p/w500/ulzhLuWrPK07P1YkdWQLZnQh1JL.jpg",
+      description: "Earth's mightiest heroes fight to undo Thanos's snap."
+    }
+  ];
+
+  const container = document.getElementById("movie-list");
+
+  movies.forEach(movie => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${movie.image}" alt="${movie.title}" loading="lazy">
+      <div class="card-content">
+        <h3>${movie.title}</h3>
+        <p>${movie.description}</p>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
